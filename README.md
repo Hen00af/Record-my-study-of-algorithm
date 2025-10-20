@@ -12,6 +12,7 @@
 
 
 
-参考
+###### 参考
 
 (遺伝的アルゴリズム)[https://www.obitko.com/tutorials/genetic-algorithms/japanese/index.php]
+
