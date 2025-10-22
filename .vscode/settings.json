@@ -8,6 +8,11 @@
 		"string_view": "cpp",
 		"initializer_list": "cpp",
 		"ranges": "cpp",
-		"span": "cpp"
+		"span": "cpp",
+		"bitset": "cpp",
+		"regex": "cpp",
+		"utility": "cpp",
+		"valarray": "cpp",
+		"stacktrace": "cpp"
 	}
 }
