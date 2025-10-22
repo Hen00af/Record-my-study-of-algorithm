@@ -4,6 +4,15 @@
 
 using namespace std;
 
+int gcd(int num1, int num2)
+{
+	if(!(num1 % num2))
+		return 0;
+	else
+		return gcd(num2, num1%num2);
+
+}
+
 string gcdOfStrings(string str1, string str2) {
 	if(str1 + str2 != str2 + str1)
 		return("");
