@@ -3,11 +3,9 @@ public:
     bool canPlaceFlowers(vector<int>& flowerbed, int n) {
         int size = flowerbed.size();
         
-        // 植える花がない場合は常に成功
         if (n == 0) return true;
 
         for (int i = 0; i < size; ++i) {
-            // すでに花がある場所はスキップ
             if (flowerbed[i] == 1) continue;
 
             // 左側が空いているか（または左端か）
