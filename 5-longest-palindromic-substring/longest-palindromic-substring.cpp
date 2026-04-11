@@ -2,31 +2,33 @@ class Solution {
 public:
     string longestPalindrome(string s) {
         int n = s.size();
-        
         if (n < 2) return s;
-        if (n == 2) {
-            if (s[0] == s[1]) return s;
-            return s.substr(0, 1);
+
+        // DPテーブル: dp[i][j] は s[i...j] が回文かどうか
+        vector<vector<bool>> dp(n, vector<bool>(n, false));
+        int start = 0;
+        int maxLen = 1;
+
+        // 全ての1文字は回文
+        for (int i = 0; i < n; ++i) dp[i][i] = true;
+
+        // 長さ2から順にチェック（diff + 1 が現在の長さ）
+        for (int len = 2; len <= n; ++len) {
+            for (int i = 0; i <= n - len; ++i) {
+                int j = i + len - 1;
+                
+                if (s[i] == s[j]) {
+                    if (len == 2 || dp[i + 1][j - 1]) {
+                        dp[i][j] = true;
+                        if (len > maxLen) {
+                            start = i;
+                            maxLen = len;
+                        }
+                    }
+                }
+            }
         }
 
-        int start = 0, maxLen = 1;
-        for (int i = 0; i < n; ) {
-            if (n - i <= maxLen / 2) break;
-
-            int l = i, r = i;
-            while (r < n - 1 && s[r + 1] == s[r]) r++;
-            
-            i = r + 1; 
-            while (l > 0 && r < n - 1 && s[l - 1] == s[r + 1]) {
-                l--;
-                r++;
-            }
-
-            if (r - l + 1 > maxLen) {
-                start = l;
-                maxLen = r - l + 1;
-            }
-        }
         return s.substr(start, maxLen);
     }
 };
